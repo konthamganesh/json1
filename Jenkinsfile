@@ -1,1 +1,8 @@
-'{"name":"John", "age":30, "car":null}'
+node {
+      stage("checkout"){
+      def read=readJSON text:'{"name":"John", "age":30, "car":null}'
+      assert read.name=='john'
+      assert read.age=30
+      
+      }
+      }
