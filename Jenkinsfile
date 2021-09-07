@@ -7,17 +7,12 @@ pipeline {
        stage ("Creating JSON") {
             steps {
                 script{
-                    def sldata = readJSON text: '[{ "component_name": "frontend", "buildSessionId": "123" },{ "component_name": "backend", "buildSessionId": "456" }]'
+                    def sldata = readJSON text: '{"name":"John", "age":30, "car":null}'
+
                     
                     writeJSON(file: 'sl-ib-components.json', json: sldata )
                  }
              }
         }
        
-      stage('Validate JSON') {
-            steps {
-                sh "cat sl-ib-components.json | jq ."
-         }
-      }
-   }
-}
+     
